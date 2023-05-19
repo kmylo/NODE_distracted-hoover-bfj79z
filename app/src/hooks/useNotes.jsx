@@ -18,6 +18,7 @@ const useNotes = () => {
     const fetchData = async () => {
       if (notes?.length > 0) return;
       try {
+        setIsLoaded(false);
         // const data = await getNotes(abortController.signal);
         const data = await getNotes();
         if (isMounted) {
@@ -43,8 +44,7 @@ const useNotes = () => {
     };
   }, [notes.length, setNotes]);
 
-  return { isLoaded, error, notes, handleUpdateNotes };
-  // return { notes };
+  return { error, isLoaded, notes, handleUpdateNotes };
 };
 
 export default useNotes;

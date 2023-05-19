@@ -2,20 +2,20 @@ import NoteForm from "../components/NoteForm";
 import useNotes from "../hooks/useNotes";
 import { useNavigate } from "react-router-dom";
 import { noteFormConfig } from "../utils/noteFormConfig";
-// import { createPost } from "../services/api";
+import { createNote } from "../services/api";
 
 const NoteCreate = () => {
   const { notes, handleUpdateNotes } = useNotes();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = (formData) => {
-    // createPost(notes, formData, handleUpdateNotes);
-    // navigate("/note");
+    createNote(notes, formData, handleUpdateNotes);
+    navigate("/");
   };
   const handleCancel = () => {
-    // navigate("/note");
+    navigate("/");
   };
 
-  console.log({ noteFormConfig });
+  // console.log({ noteFormConfig });
   return (
     <div className="new-post-container">
       <div>

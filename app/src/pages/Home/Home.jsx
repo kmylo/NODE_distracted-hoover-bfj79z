@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
+
+import FetchStatesWrapper from "../../components/FetchStatesWrapper/FetchStatesWrapper";
+
 import useNotes from "../../hooks/useNotes";
 import { baseNoteRoute } from "../../utils/constants";
 
 const Home = () => {
-  const { notes } = useNotes();
+  const { error, isLoaded, notes } = useNotes();
   const navigate = useNavigate();
   return (
     <>
@@ -16,9 +19,13 @@ const Home = () => {
             onClick={() => navigate(`${baseNoteRoute}/new`)}
           >
             New Note
-          </button>{" "}
+          </button>
         </div>
-        <ListItems {...{ items: notes }} />
+        {/* TODO: check if suspense */}
+        <FetchStatesWrapper {...{ error, isLoaded, items: notes }}>
+          {/* {JSON.stringify(notes, null, 2)} */}
+          <ListItems {...{ items: notes }} />
+        </FetchStatesWrapper>
         {/* <pre>
           NOTES:
           <code>{JSON.stringify(notes, null, 2)}</code>
