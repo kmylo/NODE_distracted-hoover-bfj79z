@@ -47,6 +47,8 @@ app.use(cors());
 app.use(express.json());
 // app.use(express.static("../app/dist"));
 
+// TODO: create server routes and move to notes route
+
 // Define a sample route
 app.get("/", (req, res) => {
   // console.log({ req });
@@ -120,11 +122,11 @@ app.put("/api/notes/:id", (req, res, next) => {
     important,
   };
 
-  console.log(id, newNoteInfo);
+  // console.log(id, newNoteInfo);
 
   Note.findByIdAndUpdate(id, newNoteInfo, { new: true })
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       res.json(result);
     })
     .catch(next);

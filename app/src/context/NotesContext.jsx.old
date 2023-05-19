@@ -1,0 +1,47 @@
+import { createContext, useContext, useMemo } from "react";
+
+function preserveRef(key, v) {
+  if (import.meta.env.PROD) return v;
+
+  const old = import.meta.hot.data[key];
+  const now = old || v;
+
+  import.meta.hot.on("vite:beforeUpdate", () => {
+    import.meta.hot.data[key] = now;
+  });
+
+  return now;
+}
+
+const initState = {
+  notes: [],
+};
+
+// const NotesContext = createContext(initState);
+// export const NotesContext = createContext(null);
+export const NotesContext = preserveRef("c", React.createContext());
+NotesContext.displayName = "Notes";
+
+export const NotesContextProvider = ({ children }) => {
+  //   const [notes, setNotes] = useState(initState.notes);
+  const [notes, setNotes] = useState([]);
+
+  const notesContextValue = useMemo(
+    () => ({ notes, setNotes }),
+    [notes, setNotes]
+  );
+  const title = "myapp";
+
+  return (
+    // <NotesContext.Provider value={notesContextValue}>
+    <NotesContext.Provider value={title}>{children}</NotesContext.Provider>
+  );
+};
+
+export const useNotesContext = () => {
+  const context = useContext(NotesContext);
+  if (context === undefined) {
+    throw new Error("useNotes must be used within a NotesProvider");
+  }
+  return context;
+};
