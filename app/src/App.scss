@@ -40,3 +40,35 @@
 .read-the-docs {
   color: #888;
 }
+
+.item-list {
+  max-width: 85vw;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(65, 67, 90, 0.7);
+  border-radius: 3px;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.15s ease-out;
+  &:hover {
+    transform: scale(1.05);
+  }
+  .content {
+    padding: 25px;
+    height: 100%;
+  }
+}

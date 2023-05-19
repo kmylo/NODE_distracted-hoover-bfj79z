@@ -3,9 +3,9 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.scss";
 
-// const EP_URL = "https://localhost:3001/api/notes";
+const EP_URL = "https://localhost:3001/api/notes";
 // const EP_URL = "/api/notes";
-const EP_URL = "https://zhm7xm-3001.csb.app/api/notes";
+// const EP_URL = "https://i5msdw-3001.csb.app/api/notes";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,12 +31,12 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React!</h1>
-      <ListItems />
-      <pre>
+      <h1>Vite + React!!!</h1>
+      <ListItems {...{ items: data }} />
+      {/* <pre>
         DATA:
         <code>{JSON.stringify(data, null, 2)}</code>
-      </pre>
+      </pre> */}
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -54,12 +54,19 @@ function App() {
 
 export default App;
 
-const ListItems = () => {
+const ListItems = ({ items }) => {
+  if (!items) return null;
   return (
     <div className="item-list">
-      <div className="item-container">
-        <div className="content">some content</div>
-      </div>
+      {items.map((item, idx) => {
+        return (
+          <div className="item-container" key={item.id}>
+            <div className="content">
+              {idx}: {item.content}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
