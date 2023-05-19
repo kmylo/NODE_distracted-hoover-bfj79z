@@ -22,7 +22,6 @@
   "license": "ISC",
   "eslintConfig": {
     "ignorePatterns": "build",
-    "extends": "./node_modules/standard/eslintrc.json",
     "env": {
       "cypress/globals": true,
       "jest": true
@@ -34,7 +33,7 @@
   "devDependencies": {
     "concurrently": "8.0.1",
     "eslint-plugin-cypress": "2.11.2",
-    "standard": "16.0.3"
+    "eslint": "^8.38.0"
   },
   "proxy": "http://localhost:3001"
 }

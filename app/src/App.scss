@@ -60,6 +60,7 @@
   flex-direction: column;
   background-color: rgba(65, 67, 90, 0.7);
   border-radius: 3px;
+  text-align: left;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -67,8 +68,37 @@
   &:hover {
     transform: scale(1.05);
   }
+  .item-header {
+    font-size: 3em;
+    margin-left: 20px;
+  }
+  .item-footer {
+    padding: 1.2em;
+    justify-content: space-between;
+    background-color: #1b00ff1f;
+  }
   .content {
     padding: 25px;
     height: 100%;
   }
+}
+
+.flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
