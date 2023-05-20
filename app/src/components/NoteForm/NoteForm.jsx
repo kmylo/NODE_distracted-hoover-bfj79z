@@ -73,7 +73,7 @@ const NoteForm = ({ currentNote, onSubmit, handleCancelEdit, formConfig }) => {
 
   return (
     <>
-      {/* NotesForm */} {/* TODO: add some form comp with the post wrapper */}
+      {/* NotesForm */} {/* TODO: add some form comp with the wrapper */}
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="txt-left">
           {formConfig.map((group) => (

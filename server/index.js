@@ -89,11 +89,11 @@ app.delete("/api/notes/:id", async (req, res) => {
 });
 
 // CREATE ONE NOTE
-app.post("/api/notes", async (request, response, next) => {
-  const { content, important = false } = request.body;
+app.post("/api/notes", async (req, res, next) => {
+  const { content, important = false } = req.body;
 
   if (!content) {
-    return response.status(400).json({
+    return res.status(400).json({
       error: 'required "content" field is missing',
     });
   }
@@ -107,7 +107,7 @@ app.post("/api/notes", async (request, response, next) => {
   newNote
     .save()
     .then((savedNote) => {
-      response.json(savedNote);
+      res.json(savedNote);
     })
     .catch((err) => next(err));
 });

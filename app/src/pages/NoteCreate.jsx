@@ -8,7 +8,15 @@ const NoteCreate = () => {
   const { notes, handleUpdateNotes } = useNotes();
   const navigate = useNavigate();
   const handleSubmit = (formData) => {
-    createNote(notes, formData, handleUpdateNotes);
+    console.log({ formData });
+
+    createNote({ newNote: formData })
+      .then((res) => {
+        const data = [...notes, res];
+        // const data = [...notes, formData];
+        handleUpdateNotes(data);
+      })
+      .catch(console.error);
     navigate("/");
   };
   const handleCancel = () => {
@@ -17,9 +25,9 @@ const NoteCreate = () => {
 
   // console.log({ noteFormConfig });
   return (
-    <div className="new-post-container">
+    <div className="new-note-container">
       <div>
-        <span className="text-xl uppercase">New Post</span>
+        <span className="text-xl uppercase">New Note!!</span>
       </div>
       <NoteForm
         onSubmit={handleSubmit}

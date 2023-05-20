@@ -3,6 +3,7 @@ import { lazy } from "react";
 import { baseNoteRoute } from "../utils/constants";
 
 // import NoteEdit from "../pages/PostEdit";
+
 import NoteCreate from "../pages/NoteCreate";
 // import NotFound from "../pages/NotFound";
 // import SingleNote from "../pages/SinglePost";

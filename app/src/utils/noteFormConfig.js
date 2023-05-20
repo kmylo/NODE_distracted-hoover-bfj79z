@@ -31,18 +31,18 @@ export const noteFormConfig = [
       },
     ],
   },
-  {
-    label: "Important",
-    fields: [
-      {
-        elementType: "input",
-        type: "checkbox",
-        label: "important",
-        field: "important",
-        // ...other options
-      },
-    ],
-  },
+  // {
+  //   label: "Important",
+  //   fields: [
+  //     {
+  //       elementType: "input",
+  //       type: "checkbox",
+  //       label: "important",
+  //       field: "important",
+  //       // ...other options
+  //     },
+  //   ],
+  // },
 ];
 
 export const templateFormConfig = [
