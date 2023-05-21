@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import FetchStatesWrapper from "../../components/FetchStatesWrapper/FetchStatesWrapper";
 
 import useNotes from "../../hooks/useNotes";
+import { deleteNote } from "../../services/api";
 import { baseNoteRoute } from "../../utils/constants";
 
 const Home = () => {
@@ -38,10 +39,17 @@ const Home = () => {
 export default Home;
 
 const ListItems = ({ items }) => {
+  const { notes, handleUpdateNotes } = useNotes();
+  const handleClick = ({ noteId }) => {
+    deleteNote({ noteId }).then(() => {
+      const updatedNotes = notes.filter((note) => note.id !== noteId);
+      handleUpdateNotes(updatedNotes);
+    });
+  };
   if (!items) return null;
   return (
     <div className="item-list">
-      {items.map((item, idx) => {
+      {items?.map((item, idx) => {
         return (
           <div className="item-container" key={item.id}>
             <div className="item-header">{idx} </div>
@@ -50,7 +58,9 @@ const ListItems = ({ items }) => {
             </div>
             <div className="item-footer mt-auto flex row">
               <button>EDIT</button>
-              <button>DELETE</button>
+              <button onClick={() => handleClick({ noteId: item.id })}>
+                DELETE
+              </button>
             </div>
           </div>
         );

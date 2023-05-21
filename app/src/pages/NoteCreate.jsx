@@ -15,9 +15,9 @@ const NoteCreate = () => {
         const data = [...notes, res];
         // const data = [...notes, formData];
         handleUpdateNotes(data);
+        navigate("/");
       })
       .catch(console.error);
-    navigate("/");
   };
   const handleCancel = () => {
     navigate("/");

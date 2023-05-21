@@ -43,7 +43,7 @@ let notes = [
   },
 ];
 
-app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 // app.use(express.static("../app/dist"));
 
@@ -84,7 +84,7 @@ app.delete("/api/notes/:id", async (req, res) => {
   const { id } = req.params;
   const data = await Note.findByIdAndDelete(id);
   if (data === null) return res.sendStatus(404);
-
+  return res.json(data);
   res.status(204).end();
 });
 

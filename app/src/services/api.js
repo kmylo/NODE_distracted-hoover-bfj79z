@@ -73,6 +73,7 @@ export const createNote = ({ newNote }) => {
   };
   console.log({ API_URL_DOMAIN, notesURLEndpoint });
   return fetch("https://i5msdw-3001.csb.app/api/notes", {
+    // return fetch("https://localhost:3001/api/notes", {
     method: "POST",
     body: JSON.stringify(body),
     headers: {
@@ -80,6 +81,21 @@ export const createNote = ({ newNote }) => {
       "Content-type": "application/json",
     },
   })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json);
+      return json;
+    })
+    .catch(console.error);
+};
+
+export const deleteNote = ({ noteId }) => {
+  console.log({ noteId });
+  const URL = `https://i5msdw-3001.csb.app/api/notes/${noteId}`;
+  const params = {
+    method: "DELETE",
+  };
+  return fetch(URL, params)
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
