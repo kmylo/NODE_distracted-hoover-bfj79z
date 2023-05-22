@@ -2,7 +2,6 @@ import { Suspense, useContext } from "react";
 import { useRoutes, useNavigate } from "react-router-dom";
 
 import { CountContext } from "./context/CountProvider";
-import useNotes from "./hooks/useNotes";
 
 import { APP_ROUTES } from "./routes/Routes";
 

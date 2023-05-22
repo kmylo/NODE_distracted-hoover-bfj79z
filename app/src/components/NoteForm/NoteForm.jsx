@@ -1,18 +1,23 @@
 import useNoteForm from "../../hooks/useNoteForm";
 
 const NoteForm = ({ currentNote, onSubmit, handleCancelEdit, formConfig }) => {
+  // console.log({ currentNote, onSubmit, handleCancelEdit, formConfig });
   const { state, onDispatchField, handleSubmit } = useNoteForm({
     currentNote,
     onSubmit,
   });
   const { isLoading } = state;
+  console.log({ state });
 
   const renderFormElement = (elementConfig) => {
     const {
       elementType,
+      id,
       label,
       type = "text",
       field,
+      value,
+      checked,
       defaultValue,
       placeholder = "placeholder",
       minLength,
@@ -22,12 +27,19 @@ const NoteForm = ({ currentNote, onSubmit, handleCancelEdit, formConfig }) => {
       rows,
     } = elementConfig;
 
+    // type==="checkbox" ? checked=checked:
+
     const formElementComponents = {
       input: (
         <input
+          // {...{
+          // }}
+          id={id}
           type={type}
           name={field}
           label={label}
+          value={value}
+          checked={checked}
           defaultValue={defaultValue ?? currentNote?.[field]}
           className="input input-bordered w-full"
           minLength={minLength}
@@ -73,7 +85,7 @@ const NoteForm = ({ currentNote, onSubmit, handleCancelEdit, formConfig }) => {
 
   return (
     <>
-      {/* NotesForm */} {/* TODO: add some form comp with the post wrapper */}
+      {/* NotesForm */} {/* TODO: add some form comp with the wrapper */}
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="txt-left">
           {formConfig.map((group) => (
