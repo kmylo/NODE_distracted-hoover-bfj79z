@@ -39,9 +39,9 @@ const client = async (domain, endpoint, { body, ...customConfig } = {}) => {
 
   // const response = await window.fetch(`${envDomain}/${endpoint}`, config);
   // const response = await window.fetch(_URL, config);
-  console.log({ _URL, config });
+  // console.log({ _URL, config });
   const response = await fetch(_URL, config);
-  console.log({ response });
+  // console.log({ response });
   // console.log("ere", response);
   if (response.status === 401) {
     logout();

@@ -7,7 +7,7 @@ const NoteForm = ({ currentNote, onSubmit, handleCancelEdit, formConfig }) => {
     onSubmit,
   });
   const { isLoading } = state;
-  console.log({ state });
+  // console.log({ state });
 
   const renderFormElement = (elementConfig) => {
     const {

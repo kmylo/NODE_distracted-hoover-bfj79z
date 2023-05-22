@@ -14,7 +14,7 @@ const useNoteForm = ({ note, onSubmit }) => {
   const [state, dispatch] = useReducer(formReducer, mergedData);
   const { isLoading, error, ...rest } = state;
 
-  console.log({ state });
+  // console.log({ state });
 
   const onDispatchField = (e, fieldName) => {
     const { type } = e.currentTarget;

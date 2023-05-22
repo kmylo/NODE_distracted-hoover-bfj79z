@@ -8,7 +8,7 @@ const NoteCreate = () => {
   const { notes, handleUpdateNotes } = useNotes();
   const navigate = useNavigate();
   const handleSubmit = (formData) => {
-    console.log({ formData });
+    // console.log({ formData });
 
     createNote({ newNote: formData })
       .then((res) => {
