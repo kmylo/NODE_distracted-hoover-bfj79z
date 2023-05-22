@@ -17,6 +17,19 @@ export const oldNoteFormConfig = [
 
 export const noteFormConfig = [
   {
+    label: "Title",
+    fields: [
+      {
+        elementType: "input",
+        type: "text",
+        label: "title",
+        field: "title",
+        placeholder: "Enter title",
+        // ...other options
+      },
+    ],
+  },
+  {
     label: "Content",
     fields: [
       {
@@ -31,18 +44,19 @@ export const noteFormConfig = [
       },
     ],
   },
-  // {
-  //   label: "Important",
-  //   fields: [
-  //     {
-  //       elementType: "input",
-  //       type: "checkbox",
-  //       label: "important",
-  //       field: "important",
-  //       // ...other options
-  //     },
-  //   ],
-  // },
+  {
+    label: "Important",
+    fields: [
+      {
+        elementType: "input",
+        type: "checkbox",
+        label: "important",
+        field: "important",
+        defaultValue: false,
+        // ...other options
+      },
+    ],
+  },
 ];
 
 export const templateFormConfig = [

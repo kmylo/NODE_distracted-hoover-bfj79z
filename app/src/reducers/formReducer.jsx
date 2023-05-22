@@ -1,4 +1,5 @@
 export function formReducer(state, action) {
+  console.log({ state, action });
   switch (action.type) {
     case "field": {
       return {
